@@ -14,21 +14,10 @@ set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 
 # message(STATUS ${PROJECT_SOURCE_DIR})
 # message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
+# message(STATUS ${CMAKE_BINARY_DIR})
 
-link_directories(
-	${PROJECT_SOURCE_DIR}/libs/
-)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-aux_source_directory(src DIR_MAIN_SRCS)
-add_executable(${PROJECTNAME} ${DIR_MAIN_SRCS})
-
-# include header path
-target_include_directories(${PROJECTNAME} PUBLIC
-	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
-)
-
-# Link libs
-target_link_libraries(${PROJECTNAME} -lglfw)
-target_link_libraries(${PROJECTNAME} -lpthread)
-target_link_libraries(${PROJECTNAME} -ldl)
-target_link_libraries(${PROJECTNAME} -lGL)
+add_subdirectory(src)
