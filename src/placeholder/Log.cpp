@@ -1,9 +1,10 @@
 #include "Log.h"
+#include <spdlog/sinks/stdout_color_sinks-inl.h>
 
 namespace Placeholder
 {
-    static std::shared_ptr<spdlog::logger> Log::_CoreLogger;
-    static std::shared_ptr<spdlog::logger> Log::_ClientLogger;
+    std::shared_ptr<spdlog::logger> Log::_CoreLogger;
+    std::shared_ptr<spdlog::logger> Log::_ClientLogger;
 
     Log::Log()
     {}
@@ -11,11 +12,11 @@ namespace Placeholder
     Log::~Log()
     {}
 
-    vodi Log::Init()
+    void Log::Init()
     {
         spdlog::set_pattern("%^[%T] %n: %v%$");
 
-        _CoreLogger = spdlog::stdout_color_mt("PLACEHOLDER");
+        _CoreLogger = spdlog::stdout_color_mt("PLACEHOLDER", spdlog::color_mode::always);
         _CoreLogger->set_level(spdlog::level::trace);
 
         _ClientLogger = spdlog::stdout_color_mt("APP");

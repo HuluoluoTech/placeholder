@@ -18,23 +18,25 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 # message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
 
+set(DLLNAME placeholder)
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
-add_library(placeholder SHARED ${DIR_MAIN_SRCS})
+add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
 
 # include header path
-target_include_directories(${PROJECTNAME} PUBLIC
+target_include_directories(${DLLNAME} PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/configuration/>
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 )
 
 # Link libs
-target_link_libraries(${PROJECTNAME} -lglfw)
-target_link_libraries(${PROJECTNAME} -lpthread)
-target_link_libraries(${PROJECTNAME} -ldl)
-target_link_libraries(${PROJECTNAME} -lGL)
+target_link_libraries(${DLLNAME} -lglfw)
+target_link_libraries(${DLLNAME} -lpthread)
+target_link_libraries(${DLLNAME} -ldl)
+target_link_libraries(${DLLNAME} -lGL)
 
 ###########################################################################
 #
@@ -42,6 +44,5 @@ target_link_libraries(${PROJECTNAME} -lGL)
 #
 ###########################################################################
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
-include(spdlog)	# 填写文件名
-
-target_link_libraries(${PROJECTNAME} PRIVATE spdlog::spdlog)
+include(spdlog)
+target_link_libraries(${DLLNAME} spdlog::spdlog)

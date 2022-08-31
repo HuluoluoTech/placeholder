@@ -24,6 +24,7 @@ add_executable(${PROJECTNAME} ${DIR_MAIN_SRCS})
 # include header path
 target_include_directories(${PROJECTNAME} PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/../src/>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/../.vendor/spdlog/include> #spdlog
 )
 
 # Link libs
@@ -31,3 +32,4 @@ target_link_libraries(${PROJECTNAME} -lpthread)
 target_link_libraries(${PROJECTNAME} -ldl)
 target_link_libraries(${PROJECTNAME} -lGL)
 target_link_libraries(${PROJECTNAME} -lplaceholder)
+target_link_libraries(${PROJECTNAME} -lspdlog)

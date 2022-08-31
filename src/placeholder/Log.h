@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory> // shared_ptr
+
 #include <spdlog/spdlog.h>
 
 namespace Placeholder
