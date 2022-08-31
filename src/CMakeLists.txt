@@ -8,9 +8,10 @@ if(NOT DEFINED CMAKE_CXX_STANDARD OR CMAKE_CXX_STANDARD LESS 11)
 	message(FATAL_ERROR "ERROR: CMAKE_CXX_STANDARD is not set or it is too low. Minimum C++ v11 is required to compile \"DLib\" library.")
 endif()
 
-if(MSVC OR MSYS OR MINGW)
-    # for detecting Windows compilers
-elseif()
+# only linux support
+message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	message(FATAL_ERROR "Placeholder only support Linux!")
 endif()
 
 set(CMAKE_CXX_STANDARD 20)
