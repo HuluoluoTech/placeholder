@@ -34,3 +34,4 @@
 # Building
 my_build
 .vscode
+.vendor

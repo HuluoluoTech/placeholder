@@ -19,11 +19,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-configure_file(${PROJECT_SOURCE_DIR}/configuration/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/placeholder/Config.h)
+# message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
 
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
 add_library(placeholder SHARED ${DIR_MAIN_SRCS})
@@ -39,3 +35,13 @@ target_link_libraries(${PROJECTNAME} -lglfw)
 target_link_libraries(${PROJECTNAME} -lpthread)
 target_link_libraries(${PROJECTNAME} -ldl)
 target_link_libraries(${PROJECTNAME} -lGL)
+
+###########################################################################
+#
+# import vendor
+#
+###########################################################################
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+include(spdlog)	# 填写文件名
+
+target_link_libraries(${PROJECTNAME} PRIVATE spdlog::spdlog)

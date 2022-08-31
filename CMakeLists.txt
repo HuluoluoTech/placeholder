@@ -12,12 +12,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 
-# message(STATUS ${PROJECT_SOURCE_DIR})
-# message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
-# message(STATUS ${CMAKE_BINARY_DIR})
-
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+configure_file(configuration/Config.h.in src/placeholder/Config.h)
 
 add_subdirectory(src)
