@@ -1,7 +1,11 @@
 #include <iostream>
-#include <Test.h>
+#include <Placeholder.h>
 
-int main()
+class Sandbox : public Placeholder::Application
 {
-    Hello();
+};
+
+Placeholder::Application* Placeholder::CreateApplication()
+{
+    return new Sandbox();
 }
