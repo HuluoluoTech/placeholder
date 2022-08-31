@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Application.h"
+#include "config.h"
 
 namespace Placeholder
 {

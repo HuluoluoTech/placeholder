@@ -1,6 +1,6 @@
 #pragma once
 
-// #ifdef PL_PLATFORM_UNIX
+#include <config.h>
 
 extern Placeholder::Application* Placeholder::CreateApplication();
 

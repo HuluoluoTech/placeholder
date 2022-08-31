@@ -13,7 +13,6 @@ if(MSVC OR MSYS OR MINGW)
 elseif()
 endif()
 
-
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
@@ -23,11 +22,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+configure_file(${PROJECT_SOURCE_DIR}/configuration/config.h.in ${PROJECT_SOURCE_DIR}/configuration/config.h)
+
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
 add_library(placeholder SHARED ${DIR_MAIN_SRCS})
 
+
 # include header path
 target_include_directories(${PROJECTNAME} PUBLIC
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/configuration/>
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 )
 
