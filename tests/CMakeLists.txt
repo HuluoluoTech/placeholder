@@ -28,7 +28,7 @@ add_executable(${PROJECTNAME} ${DIR_MAIN_SRCS})
 # include header path
 target_include_directories(${PROJECTNAME} PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/../src/>
-	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/../configuration/>
+	# $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/../configuration/>
 )
 
 # Link libs

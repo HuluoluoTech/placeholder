@@ -1,6 +1,6 @@
 #pragma once
 
-#include <config.h>
+#include "Config.h"
 
 extern Placeholder::Application* Placeholder::CreateApplication();
 

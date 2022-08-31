@@ -22,11 +22,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-configure_file(${PROJECT_SOURCE_DIR}/configuration/config.h.in ${PROJECT_SOURCE_DIR}/configuration/config.h)
+configure_file(${PROJECT_SOURCE_DIR}/configuration/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/placeholder/Config.h)
 
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
 add_library(placeholder SHARED ${DIR_MAIN_SRCS})
-
 
 # include header path
 target_include_directories(${PROJECTNAME} PUBLIC
