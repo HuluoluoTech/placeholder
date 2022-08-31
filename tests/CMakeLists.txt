@@ -17,7 +17,7 @@ set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 message(STATUS ${PROJECT_SOURCE_DIR}/../my_build/lib/)
 
 link_directories(
-  ${PROJECT_SOURCE_DIR}/../my_build/lib/
+	${PROJECT_SOURCE_DIR}/../my_build/lib/
 )
 
 aux_source_directory(. DIR_MAIN_SRCS)
