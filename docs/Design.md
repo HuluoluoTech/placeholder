@@ -7,3 +7,10 @@
 6 - Script language 
 7 - Memory management: CPU / GPU status
 8 - Entry - Component - System
+
+
+
+### workflow
+Design EntryPoint  -> 
+Add Log System -> 
+Add Event System

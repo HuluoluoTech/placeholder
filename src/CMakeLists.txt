@@ -23,9 +23,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 # message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(DLLNAME placeholder)
+
+file(GLOB_RECURSE DIR_SRCS
+	${CMAKE_CURRENT_SOURCE_DIR}/events*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cpp
+)
+
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
 # add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
-add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS})
+add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS} ${DIR_SRCS})
 
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
