@@ -6,13 +6,18 @@
 
 namespace Placeholder
 {
-	void Application::Run()
-	{
-		std::cout << "Run..." << std::endl;
+	// void Application::Run()
+	// {
+	// 	std::cout << "Application::Run..." << std::endl;
 		
-		Placeholder::AppUpdateEvent e;
-		PL_CORE_TRACE(e.GetName());
+	// 	Placeholder::AppRenderEvent e;
+	// 	if(e.IsInCategory(EventCategory::EventCategoryInput))
+	// 	{
+	// 		PL_CORE_TRACE(e.GetName());
+	// 	}
 
-		while(true);
-	}
+	// 	std::cout << e.GetName() << std::endl;
+
+	// 	while(true);
+	// }
 }

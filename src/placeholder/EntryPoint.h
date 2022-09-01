@@ -12,9 +12,12 @@ int main(int argc, char** argv)
     int x = 4;
     PL_CLIENT_TRACE("client trace : {0}", x);
     
-    auto app = Placeholder::CreateApplication();
+    Placeholder::Application* app = Placeholder::CreateApplication();
     app->Run();
+    app->Update();
     delete app;
+
+    PL_CORE_TRACE("App Deleted...");
 }
 
 // #endif

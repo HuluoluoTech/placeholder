@@ -25,13 +25,15 @@ message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
 set(DLLNAME placeholder)
 
 file(GLOB_RECURSE DIR_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/events*.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/events*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/core/*.cpp
 )
 
-aux_source_directory(./placeholder DIR_MAIN_SRCS)
+# aux_source_directory(./placeholder DIR_MAIN_SRCS)
 # add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
-add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS} ${DIR_SRCS})
+# add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS} ${DIR_SRCS})
+add_library(${DLLNAME} STATIC ${DIR_SRCS})
 
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
