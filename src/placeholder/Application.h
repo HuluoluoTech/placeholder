@@ -2,7 +2,7 @@
 
 #include "Config.h"
 #include "events/EventApplication.h"
-#include "Log.h"
+#include "core/Log.h"
 
 namespace Placeholder
 {

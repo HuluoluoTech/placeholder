@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Event.h"
-#include "placeholder/core/KeyCodes.h"
+#include "../core/KeyCodes.h"
 
-namespace Hazel {
+namespace Placeholder {
 
 	class KeyEvent : public Event
 	{

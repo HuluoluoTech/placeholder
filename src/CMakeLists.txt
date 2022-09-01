@@ -14,9 +14,9 @@ if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 	message(FATAL_ERROR "Placeholder only support Linux!")
 endif()
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
@@ -28,6 +28,8 @@ file(GLOB_RECURSE DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/events*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/core/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/renderer/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/scene/*.cpp
 )
 
 # aux_source_directory(./placeholder DIR_MAIN_SRCS)
@@ -38,6 +40,7 @@ add_library(${DLLNAME} STATIC ${DIR_SRCS})
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/libs/>
 )
 
 # Link libs
@@ -54,3 +57,6 @@ target_link_libraries(${DLLNAME} -lGL)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 include(spdlog)
 target_link_libraries(${DLLNAME} spdlog::spdlog)
+
+# include(shaderc)
+# target_link_libraries(${DLLNAME} shaderc)

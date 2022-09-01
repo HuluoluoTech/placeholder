@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "placeholder/Core/MouseCodes.h"
+#include "../core/MouseCodes.h"
 
 namespace Placeholder {
 
