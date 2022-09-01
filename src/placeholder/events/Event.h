@@ -4,7 +4,7 @@
 #include <functional>
 #include <string>
 
-#include "placeholder/core/Base.h"
+#include "../core/Base.h"
 
 namespace Placeholder
 {
@@ -17,7 +17,7 @@ namespace Placeholder
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
     };
 
-    enum class EventCategory
+    enum EventCategory
     {
 		None = 0,
 		EventCategoryApplication    = BIT(0),
@@ -47,7 +47,7 @@ namespace Placeholder
 
 		bool IsInCategory(EventCategory category)
 		{
-			return GetCategoryFlags() & category;
+			return GetCategoryFlags() & static_cast<int>(category);
 		}
 	};
 

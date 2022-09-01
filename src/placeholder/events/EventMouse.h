@@ -1,6 +1,6 @@
 #pragma once
 
-#include "placeholder/Events/Event.h"
+#include "Event.h"
 #include "placeholder/Core/MouseCodes.h"
 
 namespace Placeholder {

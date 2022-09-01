@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sstream>
-#include "placeholder/events/Event.h"
+#include "Event.h"
 
 namespace Placeholder {
 
