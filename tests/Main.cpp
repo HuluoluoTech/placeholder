@@ -5,8 +5,14 @@ class Sandbox : public Placeholder::Application
 {
 };
 
-Placeholder::Application* Placeholder::CreateApplication()
+Placeholder::Application* Placeholder::CreateApplication(Placeholder::ApplicationCommandLineArgs args)
 {
     std::cout << "Sanbox created..." << std::endl;
-    return new Sandbox();
+
+	ApplicationSpecification spec;
+	spec.Name = "Sandbox";
+	spec.WorkingDirectory = "../Hazelnut";
+	spec.CommandLineArgs = args;
+
+	return new Sandbox(spec);
 }

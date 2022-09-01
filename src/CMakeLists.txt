@@ -31,6 +31,7 @@ file(GLOB_RECURSE DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/renderer/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/scene/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/gui/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/math/*.cpp
 )
 
 # aux_source_directory(./placeholder DIR_MAIN_SRCS)
