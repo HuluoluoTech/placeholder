@@ -90,7 +90,7 @@ namespace Placeholder {
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 		: m_FilePath(filepath)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		Utils::CreateCacheDirectoryIfNeeded();
 
@@ -116,7 +116,7 @@ namespace Placeholder {
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 		: m_Name(name)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
@@ -129,14 +129,14 @@ namespace Placeholder {
 
 	OpenGLShader::~OpenGLShader()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		glDeleteProgram(m_RendererID);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		std::string result;
 		std::ifstream in(filepath, std::ios::in | std::ios::binary); // ifstream closes itself due to RAII
@@ -165,7 +165,7 @@ namespace Placeholder {
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> shaderSources;
 
@@ -372,21 +372,21 @@ namespace Placeholder {
 
 	void OpenGLShader::Bind() const
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformInt(name, value);
 	}
@@ -398,35 +398,35 @@ namespace Placeholder {
 
 	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformFloat(name, value);
 	}
 
 	void OpenGLShader::SetFloat2(const std::string& name, const glm::vec2& value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformFloat2(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		UploadUniformMat4(name, value);
 	}

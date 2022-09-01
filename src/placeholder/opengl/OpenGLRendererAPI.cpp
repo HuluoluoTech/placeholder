@@ -28,7 +28,7 @@ namespace Placeholder {
 
 	void OpenGLRendererAPI::Init()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 	#ifdef PL_DEBUG
 		glEnable(GL_DEBUG_OUTPUT);

@@ -26,10 +26,11 @@ set(DLLNAME placeholder)
 
 file(GLOB_RECURSE DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/*.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/events*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/events/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/core/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/renderer/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/scene/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/gui/*.cpp
 )
 
 # aux_source_directory(./placeholder DIR_MAIN_SRCS)
@@ -41,6 +42,7 @@ add_library(${DLLNAME} STATIC ${DIR_SRCS})
 target_include_directories(${DLLNAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/libs/>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/.vendor/imgui/>
 )
 
 # Link libs
@@ -60,3 +62,6 @@ target_link_libraries(${DLLNAME} spdlog::spdlog)
 
 include(shaderc)
 target_link_libraries(${DLLNAME} shaderc)
+
+include(imgui)
+target_link_libraries(${DLLNAME} imgui)

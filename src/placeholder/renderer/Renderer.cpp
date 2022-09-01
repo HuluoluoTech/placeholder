@@ -9,7 +9,7 @@ namespace Placeholder {
 
 	void Renderer::Init()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		RenderCommand::Init();
 		Renderer2D::Init();

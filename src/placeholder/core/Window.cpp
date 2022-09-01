@@ -23,21 +23,21 @@ namespace Placeholder {
 
 	Window::Window(const WindowProps& props)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		Init(props);
 	}
 
 	Window::~Window()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		Shutdown();
 	}
 
 	void Window::Init(const WindowProps& props)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
@@ -47,14 +47,14 @@ namespace Placeholder {
 
 		if (s_GLFWWindowCount == 0)
 		{
-			HZ_PROFILE_SCOPE("glfwInit");
+			PL_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 			PL_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
 
 		{
-			HZ_PROFILE_SCOPE("glfwCreateWindow");
+			PL_PROFILE_SCOPE("glfwCreateWindow");
 		#if defined(PL_DEBUG)
 			if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
 				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
@@ -162,7 +162,7 @@ namespace Placeholder {
 
 	void Window::Shutdown()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		glfwDestroyWindow(m_Window);
 		--s_GLFWWindowCount;
@@ -175,7 +175,7 @@ namespace Placeholder {
 
 	void Window::OnUpdate()
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		glfwPollEvents();
 		m_Context->SwapBuffers();
@@ -183,7 +183,7 @@ namespace Placeholder {
 
 	void Window::SetVSync(bool enabled)
 	{
-		HZ_PROFILE_FUNCTION();
+		PL_PROFILE_FUNCTION();
 
 		if (enabled)
 			glfwSwapInterval(1);
