@@ -10,7 +10,7 @@ project(${PROJECTNAME})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb  -frrti-no")
+set(CMAKE_CXX_FLAGSD "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -frrti-no")
 
 message(STATUS "${PROJECT_SOURCE_DIR}/")
 
@@ -33,6 +33,21 @@ target_include_directories(${PROJECTNAME} PUBLIC
 # Link libs
 
 target_link_libraries(${PROJECTNAME} -lplaceholder)
-
 target_link_libraries(${PROJECTNAME} ${CMAKE_DL_LIBS})
 
+target_link_libraries(${PROJECTNAME} -lshaderc)
+target_link_libraries(${PROJECTNAME} -lglslang)
+target_link_libraries(${PROJECTNAME} -lglslc)
+target_link_libraries(${PROJECTNAME} -lHLSL)
+target_link_libraries(${PROJECTNAME} -lshaderc_util)
+target_link_libraries(${PROJECTNAME} -lSPIRV)
+target_link_libraries(${PROJECTNAME} -lSPIRV-Tools)
+target_link_libraries(${PROJECTNAME} -lSPIRV-Tools-opt)
+target_link_libraries(${PROJECTNAME} 
+-lspirv-cross-cpp
+-lspirv-cross-core 
+-lspirv-cross-glsl
+-lspirv-cross-hlsl
+-lspirv-cross-msl
+-lspirv-cross-reflect
+-lspirv-cross-util)

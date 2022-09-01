@@ -1,6 +1,7 @@
 #include "../plpch.h"
-#include "OpenGLContext.h"
 #include <glad/glad.h>
+
+#include "OpenGLContext.h"
 #include <GLFW/glfw3.h>
 
 namespace Placeholder {

@@ -24,7 +24,7 @@ message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(DLLNAME placeholder)
 
-file(GLOB_RECURSE DIR_SRCS
+file(GLOB DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/events/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/core/*.cpp
@@ -33,7 +33,16 @@ file(GLOB_RECURSE DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/gui/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/utils/*.c
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/math/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/opengl/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../libs/stb_image/*.cpp
+)
+
+
+file(GLOB DEP_IMGUI_SRCS
+	${CMAKE_CURRENT_SOURCE_DIR}/../.vendor/imgui/*.h
+	${CMAKE_CURRENT_SOURCE_DIR}/../.vendor/imgui/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/../.vendor/imgui/backends/imgui_impl_glfw.*
+	${CMAKE_CURRENT_SOURCE_DIR}/../.vendor/imgui/backends/imgui_impl_opengl3.*
 )
 
 link_directories(
@@ -44,7 +53,7 @@ link_directories(
 # add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
 # add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS} ${DIR_SRCS})
 # add_library(${DLLNAME} STATIC ${DIR_SRCS})
-add_library(${DLLNAME} ${DIR_SRCS})
+add_library(${DLLNAME} SHARED ${DIR_SRCS} ${DEP_IMGUI_SRCS})
 
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
@@ -83,6 +92,17 @@ target_link_libraries(${DLLNAME} shaderc_util)
 target_link_libraries(${DLLNAME} SPIRV)
 target_link_libraries(${DLLNAME} SPIRV-Tools)
 target_link_libraries(${DLLNAME} SPIRV-Tools-opt)
+target_link_libraries(${DLLNAME} SPIRV-Tools-link)
 
-include(imgui)
-target_link_libraries(${DLLNAME} imgui)
+target_link_libraries(${DLLNAME} -lspirv-cross-cpp)
+target_link_libraries(${DLLNAME} -lspirv-cross-core 
+-lspirv-cross-glsl
+-lspirv-cross-hlsl
+-lspirv-cross-msl
+-lspirv-cross-reflect
+-lspirv-cross-util)
+
+
+
+# include(imgui)
+# target_link_libraries(${DLLNAME} imgui)

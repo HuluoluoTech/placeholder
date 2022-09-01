@@ -1,6 +1,4 @@
-// #include <Placeholder.h>
 #include "Sandbox2D.h"
-// #include "ExampleLayer.h"
 
 class Sandbox : public Placeholder::Application
 {
