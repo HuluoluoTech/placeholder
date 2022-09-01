@@ -1,8 +1,10 @@
 #pragma once
+#include <glad/glad.h>
 
 #include "IWindow.h"
 #include "../renderer/GraphicsContext.h"
 
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 namespace Placeholder {

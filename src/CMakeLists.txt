@@ -31,26 +31,39 @@ file(GLOB_RECURSE DIR_SRCS
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/renderer/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/scene/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/gui/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/utils/*.c
 	${CMAKE_CURRENT_SOURCE_DIR}/placeholder/math/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/../libs/stb_image/*.cpp
+)
+
+link_directories(
+	${PROJECT_SOURCE_DIR}/my_build/lib/
 )
 
 # aux_source_directory(./placeholder DIR_MAIN_SRCS)
 # add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
 # add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS} ${DIR_SRCS})
-add_library(${DLLNAME} STATIC ${DIR_SRCS})
+# add_library(${DLLNAME} STATIC ${DIR_SRCS})
+add_library(${DLLNAME} ${DIR_SRCS})
 
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/libs/>
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/libs/glad/include/>
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/.vendor/imgui/>
 )
 
 # Link libs
+
 target_link_libraries(${DLLNAME} -lglfw)
-target_link_libraries(${DLLNAME} -lpthread)
-target_link_libraries(${DLLNAME} -ldl)
+target_link_libraries(${DLLNAME} -lGLU)
 target_link_libraries(${DLLNAME} -lGL)
+target_link_libraries(${DLLNAME} -lXcursor)
+
+target_link_libraries(${DLLNAME} ${CMAKE_DL_LIBS})
+target_link_libraries(${DLLNAME} -lm)
+target_link_libraries(${DLLNAME} -ldl)
 
 ###########################################################################
 #
@@ -63,6 +76,13 @@ target_link_libraries(${DLLNAME} spdlog::spdlog)
 
 include(shaderc)
 target_link_libraries(${DLLNAME} shaderc)
+target_link_libraries(${DLLNAME} glslang)
+target_link_libraries(${DLLNAME} glslc)
+target_link_libraries(${DLLNAME} HLSL)
+target_link_libraries(${DLLNAME} shaderc_util)
+target_link_libraries(${DLLNAME} SPIRV)
+target_link_libraries(${DLLNAME} SPIRV-Tools)
+target_link_libraries(${DLLNAME} SPIRV-Tools-opt)
 
 include(imgui)
 target_link_libraries(${DLLNAME} imgui)

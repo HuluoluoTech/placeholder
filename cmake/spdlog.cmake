@@ -5,6 +5,7 @@ FetchContent_Declare(
     GIT_TAG v1.x
     SOURCE_DIR ${PROJECT_SOURCE_DIR}/.vendor/spdlog
     GIT_PROGRESS TRUE
+    UPDATE_DISCONNECTED TRUE
 )
 
 FetchContent_MakeAvailable(spdlog)

@@ -1,7 +1,9 @@
 #include "../plpch.h"
 #include "OpenGLBuffer.h"
 
+extern "C" {
 #include <glad/glad.h>
+}
 
 namespace Placeholder {
 
