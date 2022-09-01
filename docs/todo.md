@@ -1,0 +1,2 @@
+- [ ] /tests/../src/placeholder/Log.h:5:10: fatal error: spdlog/spdlog.h: No such file or directory
+- [ ] _CoreLogger.set_pattern colors

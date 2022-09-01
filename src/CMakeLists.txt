@@ -24,11 +24,11 @@ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 set(DLLNAME placeholder)
 aux_source_directory(./placeholder DIR_MAIN_SRCS)
-add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
+# add_library(${DLLNAME} SHARED ${DIR_MAIN_SRCS})
+add_library(${DLLNAME} STATIC ${DIR_MAIN_SRCS})
 
 # include header path
 target_include_directories(${DLLNAME} PUBLIC
-	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/configuration/>
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
 )
 
