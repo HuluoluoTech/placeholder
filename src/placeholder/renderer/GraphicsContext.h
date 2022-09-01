@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../core/Base.h"
+
 namespace Placeholder {
 
 	class GraphicsContext

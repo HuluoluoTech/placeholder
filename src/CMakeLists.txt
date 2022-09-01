@@ -58,5 +58,5 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 include(spdlog)
 target_link_libraries(${DLLNAME} spdlog::spdlog)
 
-# include(shaderc)
-# target_link_libraries(${DLLNAME} shaderc)
+include(shaderc)
+target_link_libraries(${DLLNAME} shaderc)

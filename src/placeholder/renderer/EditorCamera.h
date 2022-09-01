@@ -7,7 +7,7 @@
 
 #include <glm/glm.hpp>
 
-namespace Hazel {
+namespace Placeholder {
 
 	class EditorCamera : public Camera
 	{

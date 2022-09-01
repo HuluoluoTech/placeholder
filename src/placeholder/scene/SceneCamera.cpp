@@ -1,5 +1,5 @@
 #include "SceneCamera.h"
-
+#include "../core/Assert.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Placeholder {

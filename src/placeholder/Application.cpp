@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "Config.h"
 #include "events/EventApplication.h"
-#include "core/UUID.h""
+#include "core/UUID.h"
 
 namespace Placeholder
 {
