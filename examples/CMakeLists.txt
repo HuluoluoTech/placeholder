@@ -4,7 +4,7 @@ if (POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW)
 endif ()
 
-set(PROJECTNAME test)
+set(PROJECTNAME sandbox)
 project(${PROJECTNAME})
 
 set(CMAKE_CXX_STANDARD 17)
