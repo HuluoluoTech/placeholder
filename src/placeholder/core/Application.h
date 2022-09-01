@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Base.h"
-
+#include "Assert.h"
 #include "IWindow.h"
 #include "LayerStack.h"
 #include "../events/Event.h"
