@@ -11,6 +11,7 @@
 #include <shaderc/shaderc.hpp>
 #include <spirv_cross/spirv_cross.hpp>
 #include <spirv_cross/spirv_glsl.hpp>
+#include <iostream>
 
 namespace Placeholder {
 
@@ -58,8 +59,10 @@ namespace Placeholder {
 		static void CreateCacheDirectoryIfNeeded()
 		{
 			std::string cacheDirectory = GetCacheDirectory();
-			if (!std::filesystem::exists(cacheDirectory))
+			if (!std::filesystem::exists(cacheDirectory)) {
+				std::cout << "Ready to create cache directory..." << std::endl;
 				std::filesystem::create_directories(cacheDirectory);
+			}
 		}
 
 		static const char* GLShaderStageCachedOpenGLFileExtension(uint32_t stage)

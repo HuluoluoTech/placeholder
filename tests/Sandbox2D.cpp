@@ -1,6 +1,6 @@
 #include "Sandbox2D.h"
-// #include <placeholder/renderer/Renderer2D.h>
 
+#include <imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -13,7 +13,7 @@ void Sandbox2D::OnAttach()
 {
 	PL_PROFILE_FUNCTION();
 
-	m_CheckerboardTexture = Placeholder::Texture2D::Create("assets/textures/Checkerboard.png");
+	m_CheckerboardTexture = Placeholder::Texture2D::Create("/home/ztgx/codespace/Huluoluo/placeholder/tests/assets/textures/background.jpg");
 }
 
 void Sandbox2D::OnDetach()
@@ -66,17 +66,17 @@ void Sandbox2D::OnImGuiRender()
 {
 	PL_PROFILE_FUNCTION();
 
-	// ImGui::Begin("Settings");
+	ImGui::Begin("Settings");
 
-	// auto stats = Placeholder::Renderer2D::GetStats();
-	// ImGui::Text("Renderer2D Stats:");
-	// ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-	// ImGui::Text("Quads: %d", stats.QuadCount);
-	// ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-	// ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+	auto stats = Placeholder::Renderer2D::GetStats();
+	ImGui::Text("Renderer2D Stats:");
+	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+	ImGui::Text("Quads: %d", stats.QuadCount);
+	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-	// ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
-	// ImGui::End();
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	ImGui::End();
 }
 
 void Sandbox2D::OnEvent(Placeholder::Event& e)

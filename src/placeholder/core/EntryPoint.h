@@ -9,7 +9,7 @@ extern Placeholder::Application* Placeholder::CreateApplication(ApplicationComma
 
 int main(int argc, char** argv)
 {
-	// Placeholder::Log::Init();
+	Placeholder::Log::Init();
 
 	// HZ_PROFILE_BEGIN_SESSION("Startup", "HazelProfile-Startup.json");
 	auto app = Placeholder::CreateApplication({ argc, argv });

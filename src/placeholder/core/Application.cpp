@@ -7,6 +7,7 @@
 
 #include "Input.h"
 #include "../utils/PlatformUtils.h"
+#include <iostream>
 
 namespace Placeholder {
 
@@ -21,8 +22,11 @@ namespace Placeholder {
 		s_Instance = this;
 
 		// Set working directory here
-		if (!m_Specification.WorkingDirectory.empty())
+		if (!m_Specification.WorkingDirectory.empty()) {
+			PL_CORE_TRACE(m_Specification.WorkingDirectory);
+			std::cout << std::filesystem::current_path() << std::endl;
 			std::filesystem::current_path(m_Specification.WorkingDirectory);
+		}
 
 		m_Window = IWindow::Create(WindowProps(m_Specification.Name));
 		m_Window->SetEventCallback(PL_BIND_EVENT_FN(Application::OnEvent));
